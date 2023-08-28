@@ -1,0 +1,94 @@
+@import "./variables.scss";
+
+.settings-popup {
+  .field-group {
+    text-align: center;
+    padding: 80px 0;
+    h3 {
+      margin-bottom: 20px;
+      color: $black;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .label-checkbox {
+      display: inline-flex;
+      align-items: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      justify-content: center;
+      position: relative;
+      .pseudo-checkbox {
+        border: 1px solid $black;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          opacity: 0;
+          margin-left: 8px;
+          margin-bottom: 8px;
+        }
+      }
+      &.checked {
+        .pseudo-checkbox {
+          img {
+            opacity: 1;
+          }
+        }
+      }
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+    .range-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      .increment,
+      .decrement {
+        width: 30px;
+        height: 30px;
+        background-color: $secondary-color;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        border-radius: 50%;
+        margin: 0 10px;
+        cursor: pointer;
+        user-select: none;
+        &.disabled {
+          pointer-events: none;
+          opacity: 0.5;
+        }
+      }
+      .actual-value {
+        color: $primary-color;
+        font-size: 30px;
+        text-align: center;
+        font-weight: 600;
+        width: 110px;
+      }
+    }
+  }
+  .buttons {
+    max-width: 200px;
+    margin: auto;
+  }
+}

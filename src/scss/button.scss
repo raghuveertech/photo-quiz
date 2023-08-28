@@ -1,0 +1,77 @@
+@import "./variables.scss";
+
+.btn {
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 16px;
+  border-radius: 0;
+  padding: 15px 20px;
+  cursor: pointer;
+  border: 0;
+  letter-spacing: 0.3px;
+  width: 100%;
+  overflow: hidden;
+  transition: color 0.3s, letter-spacing 0.3s, border-radius 0.3s;
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    transform: translateX(-50%);
+    transition: width 0.3s;
+  }
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    content: "";
+    width: 0%;
+    height: calc(100% - 4px);
+    z-index: 0;
+    transform: translateX(-50%);
+    border: 2px solid;
+    transition: width 0.3s;
+  }
+  &:hover {
+    letter-spacing: 1px;
+    border-radius: 0;
+    &:before {
+      width: 0%;
+    }
+    &:after {
+      width: calc(100% - 4px);
+    }
+  }
+  span {
+    position: relative;
+    z-index: 1;
+  }
+  &.secondary-btn {
+    color: $white;
+    &:before {
+      background-color: $secondary-color;
+    }
+    &:after {
+      border-color: $secondary-color;
+    }
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+  &.primary-btn {
+    color: $white;
+    &:before {
+      background-color: $primary-color;
+    }
+    &:after {
+      border-color: $primary-color;
+    }
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import "./variables.scss";
+.image-upload-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($secondary-color, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+  margin: 0 auto 30px;
+  border: 2px dashed rgba($secondary-color, 0.5);
+  padding: 50px;
+  &:hover {
+    opacity: 0.8;
+  }
+  label {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    .icon {
+      width: 60px;
+      margin-bottom: 15px;
+      opacity: 0.8;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .text {
+      color: $secondary-color;
+      font-size: 16px;
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 0.4px;
+    }
+  }
+  input[type="file"] {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+}
