@@ -13,6 +13,9 @@
   width: 100%;
   overflow: hidden;
   transition: color 0.3s, letter-spacing 0.3s, border-radius 0.3s;
+  @media screen and (max-width: $small) {
+    font-size: 14px;
+  }
   &:before {
     position: absolute;
     top: 0;

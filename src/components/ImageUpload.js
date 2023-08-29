@@ -24,7 +24,9 @@ const ImageUpload = () => {
         <span className="icon">
           <img src="/images/image-icon.png" alt="Upload Images" />
         </span>
-        <span className="text">Browse files or drag and drop</span>
+        <span className="text">
+          Browse images <span className="drag-drop">or drag and drop</span>
+        </span>
       </label>
       <input
         id="uploadImage"

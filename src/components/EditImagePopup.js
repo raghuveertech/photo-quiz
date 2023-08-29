@@ -46,9 +46,12 @@ const EditImagePopup = (props) => {
   }, []);
 
   return (
-    <Modal>
+    <Modal className="edit-image-popup">
       <div className="edit-image">
-        <p className="hint">SCROLL ON THE IMAGE TO ZOOM</p>
+        <p className="hint">
+          <span className="desktop-hint">SCROLL ON THE IMAGE TO ZOOM</span>
+          <span className="mobile-hint">PINCH TO ZOOM</span>
+        </p>
         <Cropper
           image={src}
           crop={crop}

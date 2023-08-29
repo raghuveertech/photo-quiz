@@ -1,22 +1,45 @@
 @import "./variables.scss";
 
-.edit-image {
-  text-align: center;
-  position: relative;
-  height: calc(100% - 66px);
-  .hint {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    width: 100%;
-    color: $white;
-    letter-spacing: 6px;
-    z-index: 1;
+.edit-image-popup {
+  .edit-image {
     text-align: center;
-    font-size: 18px;
+    position: relative;
+    height: calc(100% - 66px);
+    @media screen and (max-width: $small) {
+      height: calc(100% - 120px);
+    }
+    .hint {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      color: $white;
+      letter-spacing: 6px;
+      z-index: 1;
+      text-align: center;
+      font-size: 18px;
+      background-color: rgba($black, 0.5);
+      padding: 15px 0;
+      .mobile-hint {
+        display: none;
+      }
+      @media screen and (max-width: $small) {
+        .desktop-hint {
+          display: none;
+        }
+        .mobile-hint {
+          display: block;
+        }
+      }
+    }
   }
-}
-
-.modal-buttons {
-  padding: 20px 0 0;
+  .modal-buttons {
+    padding: 20px 0 0;
+    .col-6 {
+      @media screen and (max-width: $small) {
+        flex: 0 0 100%;
+        margin-bottom: 15px;
+      }
+    }
+  }
 }

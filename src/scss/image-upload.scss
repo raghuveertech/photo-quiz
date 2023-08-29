@@ -11,6 +11,15 @@
   margin: 0 auto 30px;
   border: 2px dashed rgba($secondary-color, 0.5);
   padding: 50px;
+
+  @media screen and (max-width: $small) {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    width: 200px;
+    margin: 0 auto 20px;
+  }
+
   &:hover {
     opacity: 0.8;
   }
@@ -29,6 +38,9 @@
       width: 60px;
       margin-bottom: 15px;
       opacity: 0.8;
+      @media screen and (max-width: $small) {
+        display: none;
+      }
       img {
         width: 100%;
         height: auto;
@@ -40,6 +52,18 @@
       text-align: center;
       font-weight: 400;
       letter-spacing: 0.4px;
+      @media screen and (max-width: $small) {
+        background-color: $secondary-color;
+        padding: 15px 30px;
+        color: $white;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+      .drag-drop {
+        @media screen and (max-width: $small) {
+          display: none;
+        }
+      }
     }
   }
   input[type="file"] {

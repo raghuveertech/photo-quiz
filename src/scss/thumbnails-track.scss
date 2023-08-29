@@ -4,4 +4,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  @media screen and (max-width: $small) {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
 }

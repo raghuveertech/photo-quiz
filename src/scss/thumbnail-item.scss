@@ -7,6 +7,9 @@
   margin: 10px;
   border: 10px solid $white;
   box-shadow: 2px 2px 5px rgba($secondary-color, 0.5);
+  @media screen and (max-width: $small) {
+    flex: 0 0 240px;
+  }
   .remove-image {
     position: absolute;
     top: -20px;
