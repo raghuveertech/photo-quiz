@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { SettingsContext } from "src/App";
 import StageGridItem from "src/components/Screen2/Stage/StageGridItem";
 

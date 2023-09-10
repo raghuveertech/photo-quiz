@@ -41,7 +41,7 @@ const Screen2 = () => {
     setShowLoader(false);
     setRevealAll(false);
     setPoints(noOfChangesRemaining * 10 + 10);
-  }, [currentImageIndex]);
+  }, [currentImageIndex, noOfChangesRemaining]);
 
   return (
     <section className="screen-2">

@@ -1,8 +1,8 @@
 import React from "react";
-import "src/scss/header.scss";
 import Button from "src/components/ui/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import "src/scss/header.scss";
 
 const Header = (props) => {
   const { screen, setScreen } = props;
