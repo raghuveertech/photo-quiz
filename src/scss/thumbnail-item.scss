@@ -8,20 +8,22 @@
   border: 10px solid $white;
   box-shadow: 2px 2px 5px rgba($secondary-color, 0.5);
   @media screen and (max-width: $small) {
-    flex: 0 0 240px;
+    flex: 0 0 192px;
+    height: 108px;
   }
   .remove-image {
     position: absolute;
     top: -20px;
     right: -20px;
-    background-color: $white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
     cursor: pointer;
-    img {
+    svg {
       width: 20px;
       height: auto;
+      color: $primary-color;
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(1.5);
+      }
     }
   }
   &__main {
@@ -57,7 +59,7 @@
       cursor: pointer;
       transform: translate(-50%, -50%);
       transition: all 0.3s;
-      img {
+      svg {
         width: 100%;
         height: auto;
       }

@@ -1,0 +1,53 @@
+@import "./variables.scss";
+.stage {
+  position: relative;
+  margin-bottom: 15px;
+  .numbers-grid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid $primary-color;
+    .grid-item {
+      background-color: $white;
+      border: 1px solid $primary-color;
+      color: $secondary-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      transform-origin: center;
+      &.easy {
+        flex: 0 0 20%;
+        height: 20%;
+      }
+      &.medium {
+        flex: 0 0 16.6667%;
+        height: 16.6667%;
+      }
+      &.hard {
+        flex: 0 0 12.5%;
+        height: 12.5%;
+      }
+      &.reveal {
+        transform: scale(0);
+      }
+    }
+  }
+  .image {
+    width: 100%;
+    img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+    }
+  }
+}

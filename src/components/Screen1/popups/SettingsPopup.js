@@ -1,20 +1,31 @@
-import React, { useContext, useState } from "react";
-import Modal from "src/components/UI/Modal";
+import React, { useContext, useEffect, useState } from "react";
+import Modal from "src/components/ui/Modal";
 import { SettingsContext } from "src/App";
+import Button from "src/components/ui/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck, faCheck } from "@fortawesome/free-solid-svg-icons";
 import "src/scss/settings-popup.scss";
-import Button from "./UI/Button";
 
 const SettingsPopup = (props) => {
   const { setShowSettingsPopup } = props;
 
-  const { noOfChanges, setNoOfChances, difficultyLevel, setDifficultyLevel } =
-    useContext(SettingsContext);
+  const {
+    noOfChanges,
+    setNoOfChances,
+    setNoOfChancesRemaining,
+    difficultyLevel,
+    setDifficultyLevel,
+  } = useContext(SettingsContext);
 
-  const [noLimit, setNoLimit] = useState(false);
+  useEffect(() => {
+    setNoOfChancesRemaining(noOfChanges);
+  }, [noOfChanges]);
+
+  const [noLimit, setNoLimit] = useState(noOfChanges === null);
 
   const noLimitHandler = (e) => {
     setNoLimit(e.target.checked);
-    setNoOfChances(e.target.checked ? 0 : 1);
+    setNoOfChances(e.target.checked ? null : 1);
   };
 
   const incrementChancesHandler = () => {
@@ -64,12 +75,12 @@ const SettingsPopup = (props) => {
           <h3>No. of chances:</h3>
           <div className={`range-container ${noLimit ? "disabled" : ""}`}>
             <span
-              className={`decrement ${noOfChanges <= 0 ? "disabled" : ""} `}
+              className={`decrement ${noOfChanges <= 1 ? "disabled" : ""} `}
               onClick={decrementChancesHandler}
             >
               -
             </span>
-            <p className="actual-value">{noOfChanges}</p>
+            <p className="actual-value">{noOfChanges || "No Limit"}</p>
             <span
               className={`increment ${noOfChanges >= 10 ? "disabled" : ""} `}
               onClick={incrementChancesHandler}
@@ -82,7 +93,7 @@ const SettingsPopup = (props) => {
             className={`label-checkbox ${noLimit ? "checked" : ""} `}
           >
             <span className="pseudo-checkbox">
-              <img src="/images/check-mark-icon.png" alt="No Limit" />
+              <FontAwesomeIcon icon={faCircleCheck} />
             </span>
             <input type={"checkbox"} id="noLimit" onChange={noLimitHandler} />
             No Limit
@@ -112,7 +123,9 @@ const SettingsPopup = (props) => {
           className="btn primary-btn"
           onClick={() => setShowSettingsPopup(false)}
         >
-          <span>Done</span>
+          <span>
+            Done <FontAwesomeIcon icon={faCheck} />
+          </span>
         </Button>
       </div>
     </Modal>

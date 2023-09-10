@@ -1,12 +1,9 @@
-import { useState, createContext } from "react";
-import Header from "src/components/Header";
-import ImageUpload from "src/components/ImageUpload";
-import ThumbnailsTrack from "src/components/ThumbnailsTrack";
-import Footer from "src/components/Footer";
+import { useState, createContext, useEffect } from "react";
+import Header from "src/components/layout/Header";
+import Footer from "src/components/layout/Footer";
+import Screen1 from "src/components/Screen1";
+import Screen2 from "src/components/Screen2";
 import "src/scss/app.scss";
-import Button from "./components/UI/Button";
-import EditImagePopup from "./components/EditImagePopup";
-import SettingsPopup from "./components/SettingsPopup";
 
 export const ImagesContext = createContext({
   images: [],
@@ -21,24 +18,31 @@ export const SettingsContext = createContext({
 });
 
 const App = () => {
-  const [images, setImages] = useState([]); // Array of uploaded images.
+  const [images, setImages] = useState([]); // Array of uploaded images in blob url format.
   const [screen, setScreen] = useState(1); // Screen 1 is for uploading and cropping images. Screen 2 is for the game.
   const [imageToEdit, setImageToEdit] = useState({
     id: "",
     src: "",
-  }); // give the value of the image that should be edited
+  }); // image object that should be edited in the popup
 
-  const [showSettingsPopup, setShowSettingsPopup] = useState(false);
-  const [noOfChanges, setNoOfChances] = useState(4);
-  const [difficultyLevel, setDifficultyLevel] = useState(2);
+  const [noOfChanges, setNoOfChances] = useState(4); // No. of chances to guess the image
+  const [noOfChangesRemaining, setNoOfChancesRemaining] = useState(4);
+  const [difficultyLevel, setDifficultyLevel] = useState(2); // based on this value, no. of pieces that cover the image gets decided. More the difficulty level, more no. of pieces.
+
+  useEffect(() => {
+    setNoOfChancesRemaining(noOfChanges);
+  }, [screen]);
 
   return (
     <>
-      <Header />
+      <Header setScreen={setScreen} screen={screen} />{" "}
+      {/* There is literally nothing in the header. Just added for beauty :) */}
       <SettingsContext.Provider
         value={{
           noOfChanges,
           setNoOfChances,
+          noOfChangesRemaining,
+          setNoOfChancesRemaining,
           difficultyLevel,
           setDifficultyLevel,
         }}
@@ -47,80 +51,20 @@ const App = () => {
           value={{
             images,
             setImages,
+            imageToEdit,
             setImageToEdit,
           }}
         >
-          {/* There is literally nothing in the header. Just added for beauty :) */}
-
           {screen === 1 ? (
-            <>
-              <div
-                className={`screen-1-main ${!images.length ? "center" : ""} `}
-              >
-                {images.length ? (
-                  <div className="screen-1-main__left">
-                    <ThumbnailsTrack />
-                  </div>
-                ) : null}
-                <div className="screen-1-main__right">
-                  <h1>
-                    {images.length
-                      ? "Add More Images..."
-                      : "Add Your Images Here"}
-                  </h1>
-                  {!images.length ? (
-                    <p>
-                      (Rest assured, I value your privacy and security. I want
-                      you to enjoy the game without any concerns. That's why I
-                      want to clarify:{" "}
-                      <strong>THIS APP DOES NOT STORE YOUR IMAGES</strong> in
-                      its database. You have the freedom to upload any images
-                      you like, worry-free. Your enjoyment and peace of mind are
-                      my top priorities!)
-                    </p>
-                  ) : null}
-                  <ImageUpload />
-                  {images.length ? (
-                    <div className="screen-1-main__right__btns row">
-                      <div className="col-6">
-                        <Button
-                          className="btn secondary-btn"
-                          onClick={() => setShowSettingsPopup(true)}
-                        >
-                          <span>Settings</span>
-                        </Button>
-                      </div>
-                      <div className="col-6">
-                        <Button
-                          className="btn primary-btn"
-                          onClick={() => setScreen(2)}
-                        >
-                          <span>Start The Game</span>
-                        </Button>
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-              {imageToEdit.id ? (
-                <EditImagePopup
-                  image={imageToEdit}
-                  setImageToEdit={setImageToEdit}
-                />
-              ) : null}
-
-              {showSettingsPopup ? (
-                <SettingsPopup setShowSettingsPopup={setShowSettingsPopup} />
-              ) : null}
-
-              {/* ThumbnailsTrack component has thumbnails of uploaded images & ImageUpload component */}
-            </>
+            <Screen1 setScreen={setScreen} screen={screen} />
           ) : (
-            <></>
+            <>
+              <Screen2 />
+            </>
           )}
         </ImagesContext.Provider>
       </SettingsContext.Provider>
-      <Footer />
+      {screen === 1 ? <Footer /> : null}
     </>
   );
 };

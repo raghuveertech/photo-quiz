@@ -1,5 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ImagesContext } from "src/App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleXmark,
+  faPenToSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import "src/scss/thumbnail-item.scss";
 
 const ThumbnailItem = (props) => {
@@ -21,7 +26,7 @@ const ThumbnailItem = (props) => {
         className="remove-image"
         onClick={() => removeImageHandler(image.id)}
       >
-        <img src="/images/remove-icon.png" />
+        <FontAwesomeIcon icon={faCircleXmark} />
       </span>
       <div
         className="thumbnail-item__main"
@@ -29,7 +34,7 @@ const ThumbnailItem = (props) => {
       >
         <img className="main-image" src={image.src} />
         <span className="edit-image">
-          <img src="/images/draw-icon.png" />
+          <FontAwesomeIcon icon={faPenToSquare} fade />
         </span>
       </div>
     </div>

@@ -1,16 +1,18 @@
 import React, { useState, useCallback, useContext } from "react";
 import Cropper from "react-easy-crop";
-import "src/scss/edit-image-popup.scss";
-import Button from "src/components/UI/Button";
-import Modal from "src/components/UI/Modal";
+import Button from "src/components/ui/Button";
+import Modal from "src/components/ui/Modal";
 import getCroppedImg from "src/utilities/crop-image";
 import { ImagesContext } from "src/App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHand, faCropSimple } from "@fortawesome/free-solid-svg-icons";
+import "src/scss/edit-image-popup.scss";
 
-const EditImagePopup = (props) => {
-  const { images, setImages } = useContext(ImagesContext);
+const EditImagePopup = () => {
+  const { images, setImages, setImageToEdit, imageToEdit } =
+    useContext(ImagesContext);
 
-  const { setImageToEdit, image } = props;
-  const { id, src } = image;
+  const { id, src } = imageToEdit;
 
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -73,7 +75,9 @@ const EditImagePopup = (props) => {
               });
             }}
           >
-            <span>Use Original Image</span>
+            <span>
+              Don't Crop <FontAwesomeIcon icon={faHand} />
+            </span>
           </Button>
         </div>
         <div className="col-6">
@@ -81,7 +85,9 @@ const EditImagePopup = (props) => {
             className="btn primary-btn"
             onClick={replaceImgWithCroppedImg}
           >
-            <span>Use Cropped Image</span>
+            <span>
+              Crop <FontAwesomeIcon icon={faCropSimple} />
+            </span>
           </Button>
         </div>
       </div>

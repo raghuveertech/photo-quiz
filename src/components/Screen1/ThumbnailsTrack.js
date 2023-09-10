@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ThumbnailItem from "src/components/ThumbnailItem";
+import ThumbnailItem from "src/components/Screen1/ThumbnailItem";
 import { ImagesContext } from "src/App";
 import "src/scss/thumbnails-track.scss";
 

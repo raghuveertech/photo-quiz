@@ -41,9 +41,10 @@
       @media screen and (max-width: $small) {
         display: none;
       }
-      img {
+      svg {
         width: 100%;
         height: auto;
+        color: $secondary-color;
       }
     }
     .text {
@@ -52,6 +53,13 @@
       text-align: center;
       font-weight: 400;
       letter-spacing: 0.4px;
+      svg {
+        margin-right: 5px;
+        display: none;
+        @media screen and (max-width: $small) {
+          display: inline-block;
+        }
+      }
       @media screen and (max-width: $small) {
         background-color: $secondary-color;
         padding: 15px 30px;

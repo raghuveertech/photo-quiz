@@ -1,6 +1,11 @@
 import React, { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { ImagesContext } from "src/App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowUpFromBracket,
+  faImages,
+} from "@fortawesome/free-solid-svg-icons";
 import "src/scss/image-upload.scss";
 
 const ImageUpload = () => {
@@ -22,10 +27,11 @@ const ImageUpload = () => {
     <div className="image-upload-wrap">
       <label htmlFor="uploadImage">
         <span className="icon">
-          <img src="/images/image-icon.png" alt="Upload Images" />
+          <FontAwesomeIcon icon={faImages} bounce />
         </span>
         <span className="text">
-          Browse images <span className="drag-drop">or drag and drop</span>
+          <FontAwesomeIcon icon={faArrowUpFromBracket} /> Browse images
+          <span className="drag-drop">or drag and drop</span>
         </span>
       </label>
       <input
