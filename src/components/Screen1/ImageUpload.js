@@ -30,7 +30,7 @@ const ImageUpload = () => {
           <FontAwesomeIcon icon={faImages} bounce />
         </span>
         <span className="text">
-          <FontAwesomeIcon icon={faArrowUpFromBracket} /> Browse images
+          <FontAwesomeIcon icon={faArrowUpFromBracket} /> Browse images{" "}
           <span className="drag-drop">or drag and drop</span>
         </span>
       </label>

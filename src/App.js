@@ -59,7 +59,7 @@ const App = () => {
             <Screen1 setScreen={setScreen} screen={screen} />
           ) : (
             <>
-              <Screen2 />
+              <Screen2 setScreen={setScreen} />
             </>
           )}
         </ImagesContext.Provider>

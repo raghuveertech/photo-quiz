@@ -53,6 +53,12 @@
   span {
     position: relative;
     z-index: 1;
+    &.left-icon {
+      svg {
+        margin-right: 5px;
+        margin-left: 0;
+      }
+    }
   }
   &.secondary-btn {
     color: $white;
@@ -89,5 +95,9 @@
     svg {
       margin-right: 5px;
     }
+  }
+  &.disabled {
+    opacity: 0.2;
+    pointer-events: none;
   }
 }
