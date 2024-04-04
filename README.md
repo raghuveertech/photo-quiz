@@ -40,6 +40,6 @@ We appreciate the contributions of the following third-party libraries and resou
 - [uuid](https://www.npmjs.com/package/uuid)
 - [FontAwesome](https://fontawesome.com/)
 
-If you have any questions, feedback, or suggestions, please feel free to reach out to [LinkedIn Profile](https://www.linkedin.com/in/raghuveer999/).
+If you have any questions, feedback, or suggestions, please feel free to reach out to [LinkedIn Profile](https://www.linkedin.com/in/raghuveertech/).
 
 Enjoy playing Photo Quiz, the Interactive Image Guessing Game, with customizable settings and unlimited image challenges!
